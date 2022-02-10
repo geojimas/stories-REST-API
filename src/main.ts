@@ -5,11 +5,11 @@ import morgan from 'morgan'
 import helmet from 'helmet'
 import { json } from 'body-parser'
 import * as dotenv from 'dotenv'
+// Router
+import { router } from 'src/routes/index'
 
 dotenv.config()
 
-// Router
-import { router } from './routes/router'
 
 const app: Application = express()
 
@@ -24,7 +24,7 @@ app.use(
 app.use(morgan('dev'))
 app.use(json())
 app.use(express.urlencoded({ extended: true }))
-app.use(router)
+app.use('/api', router)
 
 if (!process.env.PORT) {
   process.exit(1)
