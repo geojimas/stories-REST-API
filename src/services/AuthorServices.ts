@@ -1,7 +1,10 @@
 //ORM
 import { Author, PrismaClient } from '@prisma/client'
+// Interfaces
 import { IAuthor } from 'src/interfaces/Input'
+// Validation
 import { AuthorInput } from 'src/validation'
+
 
 const prisma = new PrismaClient()
 

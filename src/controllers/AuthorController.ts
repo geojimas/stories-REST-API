@@ -13,6 +13,7 @@ import { createAuthorService,
 } from 'src/services/AuthorServices'
 
 
+// Get All Authors
 export const getAllAuthors = async (_req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
     // Get all authors from Service
@@ -27,6 +28,8 @@ export const getAllAuthors = async (_req: Request, res: Response, next: NextFunc
   }
 }
 
+
+// Get a single Author
 export const getAuthor = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
     // Get an author from Service
@@ -48,6 +51,8 @@ export const getAuthor = async (req: Request, res: Response, next: NextFunction)
   }
 }
 
+
+// Create a Single Author
 export const createAuthor = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
     // Get the created Author from Service
@@ -64,6 +69,8 @@ export const createAuthor = async (req: Request, res: Response, next: NextFuncti
   }
 }
 
+
+// Update an Author
 export const updateAuthor = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
     // Get the created Author from Service
@@ -82,6 +89,8 @@ export const updateAuthor = async (req: Request, res: Response, next: NextFuncti
   }
 }
 
+
+// Delete an Author
 export const deleteAuthor = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
     // Get an author from Service

@@ -7,6 +7,7 @@ import { IStory } from 'src/interfaces/Input'
 //Services
 import { createStoryService, deleteStoryService, getAllStoriesService, getStoryService, updateStoryService } from 'src/services/StoriesServices'
 
+
 // Get All Stories
 export const getAllStories = async (_req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
@@ -18,6 +19,7 @@ export const getAllStories = async (_req: Request, res: Response, next: NextFunc
   }
 }
 
+// Get a single story
 export const getStory = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
     const story = await getStoryService(parseInt(req.params.id))
@@ -37,6 +39,7 @@ export const getStory = async (req: Request, res: Response, next: NextFunction):
   }
 }
 
+// Create a Story
 export const createStory = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
     const data: IStory = req.body
@@ -51,6 +54,7 @@ export const createStory = async (req: Request, res: Response, next: NextFunctio
   }
 }
 
+// Update a Story
 export const updateStory = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
     const data: IStory = req.body
@@ -65,6 +69,7 @@ export const updateStory = async (req: Request, res: Response, next: NextFunctio
   }
 }
 
+// Delete a Story
 export const deleteStory = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
     // Get an author from Service

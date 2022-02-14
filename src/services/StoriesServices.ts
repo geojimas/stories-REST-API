@@ -1,7 +1,11 @@
 //ORM
 import { Story, PrismaClient } from '@prisma/client'
+// interfaces
 import { IStory } from 'src/interfaces/Input'
+// Validation
 import { StoryInput } from 'src/validation'
+
+
 const prisma = new PrismaClient()
 
 

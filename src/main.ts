@@ -33,5 +33,5 @@ if (!process.env.PORT) {
 // Starting the Server
 app.listen(process.env.PORT || 5000, () => {
   console.log(`server start running at port ${process.env.PORT}`)
-  console.log(`Server is Live here -> http://localhost:${process.env.PORT}`)
+  console.log(`Server is Live here -> http://localhost:${process.env.PORT}/api`)
 })

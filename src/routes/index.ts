@@ -8,6 +8,7 @@ import {
   getAuthor,
   updateAuthor,
 } from 'src/controllers/AuthorController'
+import { home } from 'src/controllers/homeController'
 import {
   createStory,
   deleteStory,
@@ -15,9 +16,17 @@ import {
   getStory,
   updateStory,
 } from 'src/controllers/StoriesController'
+import { register } from 'src/controllers/UserController'
 
 
 export const router = express.Router()
+
+// Welcome Page
+router.get('/', home)
+
+
+// User Routes
+router.get('/register', register)
 
 
 // Author Routes

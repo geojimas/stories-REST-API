@@ -10,6 +10,15 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+// User Model
+model User {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique @db.VarChar(255)
+  password  String   @db.VarChar(255)
+}
+
+
+// Author Model
 model Author {
   id        Int      @id @default(autoincrement())
   name      String   @unique @db.VarChar(255)
@@ -19,6 +28,7 @@ model Author {
   updatedAt DateTime @default(now()) @db.Timestamp(6)
 }
 
+// Story Model
 model Story {
   id          Int      @id @default(autoincrement())
   title       String   @unique @db.VarChar(255)
