@@ -10,7 +10,8 @@ export const home = (_req: Request, res: Response, next: NextFunction): void => 
       'message': 'Rest Api running....',
       'path': 'In order to use this api you need an account',
     })
+    return next()
   } catch (error) {
-    next(error)
+    return next(error)
   }
 }

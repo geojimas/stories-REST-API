@@ -14,8 +14,9 @@ export const getAllStories = async (_req: Request, res: Response, next: NextFunc
     const stories = await getAllStoriesService()
     res.status(StatusCodes.OK).json(stories)
 
+    return next()
   } catch (error) {
-    next(error)
+    return next(error)
   }
 }
 
@@ -34,8 +35,9 @@ export const getStory = async (req: Request, res: Response, next: NextFunction):
         'data': story
       })
     }
+    return next()
   } catch (error) {
-    next(error)
+    return next(error)
   }
 }
 
@@ -49,8 +51,9 @@ export const createStory = async (req: Request, res: Response, next: NextFunctio
       'message': `Story with name ${story.title} successfully Created !`,
       'data': story,
     })
+    return next()
   } catch (error) {
-    next(error)
+    return next(error)
   }
 }
 
@@ -64,8 +67,9 @@ export const updateStory = async (req: Request, res: Response, next: NextFunctio
       'message': `Story with name ${story.title} successfully Created !`,
       'data': story,
     })
+    return next()
   } catch (error) {
-    next(error)
+    return next(error)
   }
 }
 
@@ -84,8 +88,8 @@ export const deleteStory = async (req: Request, res: Response, next: NextFunctio
         'message':`Story with id ${req.params.id} deleted Successfully !`
       })
     }
-
+    return next()
   } catch (error) {
-    next(error)
+    return next(error)
   }
 }

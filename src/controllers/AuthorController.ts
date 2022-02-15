@@ -22,9 +22,9 @@ export const getAllAuthors = async (_req: Request, res: Response, next: NextFunc
     res.status(StatusCodes.OK).json({
       'data': authors,
     })
-
+    return next()
   } catch (error) {
-    next(error)
+    return next(error)
   }
 }
 
@@ -46,8 +46,9 @@ export const getAuthor = async (req: Request, res: Response, next: NextFunction)
       'data': author,
     })
 
+    return next()
   } catch (error) {
-    next(error)
+    return next(error)
   }
 }
 
@@ -63,9 +64,9 @@ export const createAuthor = async (req: Request, res: Response, next: NextFuncti
       'message': `Author with name ${author.name} successfully Created !`,
       'data': author,
     })
-
+    return next()
   } catch (error) {
-    next(error)
+    return next(error)
   }
 }
 
@@ -84,8 +85,9 @@ export const updateAuthor = async (req: Request, res: Response, next: NextFuncti
       'data': author,
     })
 
+    return next()
   } catch (error) {
-    next(error)
+    return next(error)
   }
 }
 
@@ -106,7 +108,8 @@ export const deleteAuthor = async (req: Request, res: Response, next: NextFuncti
       })
     }
 
+    return next()
   } catch (error) {
-    next(error)
+    return next(error)
   }
 }
