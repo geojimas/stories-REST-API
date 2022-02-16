@@ -11,6 +11,7 @@ import { UserInput } from 'src/validation'
 
 const prisma = new PrismaClient()
 
+// Register New User Service
 export const registerUserService = async (user: IUser): Promise<{newUser: User, token: string }> => {
   // Validate the User Input
   const { error } = UserInput.validate(user)
@@ -48,4 +49,33 @@ export const registerUserService = async (user: IUser): Promise<{newUser: User, 
       token
     }
   }
+}
+
+
+// Login Existing User
+export const loginUserService = async (user: IUser): Promise<{ existingUser: User, token: string }> => {
+
+  // Check if user exists
+  const existingUser: User | null = await prisma.user.findUnique({
+    where: {
+      email: user.email,
+    },
+  })
+
+  if (existingUser) {
+    // Compare the passwords
+    const password: boolean = await bcrypt.compare(existingUser.password, user.password)
+    if (!password) throw new Error('Invalid email or password...')
+
+    // Create Token
+    const token = createToken(existingUser.id)
+
+    return {
+      existingUser,
+      token
+    }
+  } else {
+    throw new Error('This User doesn\'t exist...')
+  }
+
 }

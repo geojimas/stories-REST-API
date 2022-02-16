@@ -17,7 +17,7 @@ import {
   updateStory,
 } from 'src/controllers/StoriesController'
 // User Controllers
-import { register } from 'src/controllers/UserController'
+import { DashBoardPage, logIn, logout, register } from 'src/controllers/UserController'
 // Home Controller
 import { home } from 'src/controllers/homeController'
 // Authentication Middleware
@@ -28,17 +28,26 @@ export const router = express.Router()
 // Welcome Page
 router.get('/', home)
 
-// User Routes
-router.post('/register', register)
 
-// Author Routes
+// Public User Routes
+router.post('/register', register)
+router.post('/login', logIn)
+
+
+// Private User Routes
+router.get('/logout', isAuth, logout)
+router.get('/dashboard', isAuth, DashBoardPage)
+
+
+// Private Author Routes
 router.get('/authors', isAuth, getAllAuthors)
 router.get('/authors/:id', isAuth, getAuthor)
 router.post('/authors', isAuth, createAuthor)
 router.patch('/authors/:id', isAuth, updateAuthor)
 router.delete('/authors/:id', isAuth, deleteAuthor)
 
-// Stories Routers
+
+// Private Stories Routers
 router.get('/stories', isAuth, getAllStories)
 router.get('/stories/:id', isAuth, getStory)
 router.post('/stories', isAuth, createStory)

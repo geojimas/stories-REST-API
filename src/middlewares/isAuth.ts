@@ -2,13 +2,14 @@
 import jwt, { JwtPayload } from 'jsonwebtoken'
 import { Response, NextFunction } from 'express'
 import * as dotenv from 'dotenv'
-// import { IRequestOptions } from 'src/interfaces/Requests'
+
 
 dotenv.config()
 
 // Check the user if is Authenticated
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const isAuth = (req: any, _res: Response, next: NextFunction): void => {
+
   // take the jwt cookie from headers
   const authHeader: string | undefined = req.headers['cookie']
 

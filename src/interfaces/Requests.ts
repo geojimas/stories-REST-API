@@ -1,3 +1,4 @@
+// Libraries
 import { JwtPayload } from 'jsonwebtoken'
 
 export interface IHeaders {
@@ -17,8 +18,6 @@ export interface IRequestOptions {
 }
 
 export interface IRequestContext {
-  res: {
-    headers: IHeaders
-    statusCode: number
-  }
+  headers: IHeaders
+  statusCode: number
 }
