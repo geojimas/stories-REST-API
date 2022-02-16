@@ -32,7 +32,7 @@ export const register = async (req: Request, res: Response, next: NextFunction):
   }
 }
 
-
+// Login Existing User
 export const logIn = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
     const data: IUser = req.body
