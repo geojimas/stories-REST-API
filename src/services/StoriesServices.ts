@@ -101,6 +101,7 @@ export const deleteStoryService = async (storyId: number): Promise<object | null
 
   if (story === null) {
     await prisma.$disconnect()
+
     return story
   }
 
@@ -110,5 +111,6 @@ export const deleteStoryService = async (storyId: number): Promise<object | null
     },
   })
   await prisma.$disconnect()
+
   return deletedStory
 }

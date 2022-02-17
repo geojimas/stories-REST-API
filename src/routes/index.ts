@@ -33,7 +33,6 @@ router.get('/', home)
 router.post('/register', register)
 router.post('/login', logIn)
 
-
 // Private User Routes
 router.get('/logout', isAuth, logout)
 router.get('/dashboard', isAuth, DashBoardPage)

@@ -1,6 +1,6 @@
 // Libraries
-import jwt, { JwtPayload } from 'jsonwebtoken'
 import { Response, NextFunction } from 'express'
+import jwt, { JwtPayload } from 'jsonwebtoken'
 import * as dotenv from 'dotenv'
 
 
@@ -20,6 +20,7 @@ export const isAuth = (req: any, _res: Response, next: NextFunction): void => {
   try {
     const jwtSecretKey = process.env.SECRET_KEY ? process.env.SECRET_KEY : ''
     const decoded: JwtPayload | string = jwt.verify(token, jwtSecretKey)
+
     req.user = decoded
 
     return next()

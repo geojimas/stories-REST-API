@@ -13,6 +13,7 @@ const prisma = new PrismaClient()
 
 // Register New User Service
 export const registerUserService = async (user: IUser): Promise<{newUser: User, token: string }> => {
+
   // Validate the User Input
   const { error } = UserInput.validate(user)
   if (error) throw error
@@ -25,7 +26,10 @@ export const registerUserService = async (user: IUser): Promise<{newUser: User, 
   })
 
   if (oldUser) {
+
+    await prisma.$disconnect()
     throw new Error('This Email already exists...')
+
   } else {
 
     // encrypt the password
@@ -43,6 +47,8 @@ export const registerUserService = async (user: IUser): Promise<{newUser: User, 
 
     // Create the Token
     const token: string = createToken(newUser.id)
+
+    await prisma.$disconnect()
 
     return {
       newUser,
@@ -63,6 +69,7 @@ export const loginUserService = async (user: IUser): Promise<{ existingUser: Use
   })
 
   if (existingUser) {
+
     // Compare the passwords
     const password: boolean = await bcrypt.compare(existingUser.password, user.password)
     if (!password) throw new Error('Invalid email or password...')
@@ -70,12 +77,17 @@ export const loginUserService = async (user: IUser): Promise<{ existingUser: Use
     // Create Token
     const token = createToken(existingUser.id)
 
+    await prisma.$disconnect()
+
     return {
       existingUser,
       token
     }
+
   } else {
+
+    await prisma.$disconnect()
+
     throw new Error('This User doesn\'t exist...')
   }
-
 }

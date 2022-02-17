@@ -90,6 +90,7 @@ export const deleteAuthorService = async (authorId: number): Promise<object | nu
 
   if (author === null) {
     await prisma.$disconnect()
+
     return author
   }
 
@@ -99,5 +100,6 @@ export const deleteAuthorService = async (authorId: number): Promise<object | nu
     },
   })
   await prisma.$disconnect()
+
   return deletedAuthor
 }
